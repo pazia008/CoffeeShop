@@ -103,5 +103,26 @@ namespace CoffeeShop.Repositories
             }
         }
 
+        public void DeleteCoffee(int coffeeId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            DELETE FROM Coffee
+                            WHERE Id = @id
+                        ";
+
+                    cmd.Parameters.AddWithValue("@id", coffeeId);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+
+        }
     }
 }

@@ -45,6 +45,13 @@ namespace CoffeeShop.Controllers
             return NoContent();
         }
 
+        // https://localhost:5001/api/beanvariety/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _coffeeRepo.DeleteCoffee(id);
+            return NoContent();
+        }
 
     }
 }

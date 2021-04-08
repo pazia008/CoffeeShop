@@ -12,6 +12,7 @@ namespace CoffeeShop.Repositories
         List<Coffee> GetAllCoffees();
         void AddCoffee(Coffee coffee);
         void UpdateCoffee(Coffee coffee);
+        void DeleteCoffee(int coffeeId);
 
     }
 }
