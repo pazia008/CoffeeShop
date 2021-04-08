@@ -24,6 +24,15 @@ namespace CoffeeShop.Controllers
         }
 
 
+        // https://localhost:5001/api/coffee/
+        [HttpPost]
+        public IActionResult Post(Coffee coffee)
+        {
+            _coffeeRepo.AddCoffee(coffee);
+            return CreatedAtAction("Get", new { id = coffee.Id }, coffee);
+        }
+
+      
 
 
     }

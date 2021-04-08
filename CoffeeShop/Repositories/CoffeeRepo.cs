@@ -57,6 +57,29 @@ namespace CoffeeShop.Repositories
         }
 
 
+        public void AddCoffee(Coffee coffee)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    INSERT INTO Coffee (Title, BeanVarietyId )
+                    OUTPUT INSERTED.ID
+                    VALUES (@title, @beanVarietyId);
+                ";
+
+                    cmd.Parameters.AddWithValue("@title", coffee.Title);
+                    cmd.Parameters.AddWithValue("@beanVarietyId", coffee.BeanVarietyId);
+                    int id = (int)cmd.ExecuteScalar();
+
+                    coffee.Id = id;
+                }
+            }
+        }
+
+
 
     }
 }
