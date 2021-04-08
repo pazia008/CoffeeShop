@@ -18,7 +18,8 @@ namespace CoffeeShop.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_beanVarietyRepository.GetAll());
+            var beans = _beanVarietyRepository.GetAll();
+            return Ok(beans);
         }
 
         // https://localhost:5001/api/beanvariety/5
